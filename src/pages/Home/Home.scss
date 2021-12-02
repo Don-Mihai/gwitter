@@ -1,0 +1,137 @@
+.wraper {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    width: min-content;
+    margin-bottom: 20px;
+    background-color: transparent;
+
+    &-icon {
+      margin-left: -20px;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+.aside {
+  position: relative;
+  padding: 10px 25px 0 30px;
+  width: 250px;
+
+  &_right {
+    width: 350px;
+  }
+
+  &__tweet {
+    width: 100%;
+  }
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  border-right: 1px solid grey;
+  border-left: 1px solid grey;
+
+  &__post {
+    border-bottom: 1px solid grey;
+  }
+
+  & .tweet {
+    border: 1px solid grey;
+  }
+
+  &__header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid grey;
+  }
+
+  &__header-title {
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.post {
+  display: flex;
+  padding: 20px;
+
+  &__wrap-user {
+    display: flex;
+  }
+
+  &__text {
+    margin-left: 15px;
+  }
+
+  &__user-name {
+    margin: 0 10px 0 0;
+    color: #fff;
+  }
+
+  &__user-id {
+    color: grey;
+  }
+
+  &__content {
+    margin-bottom: 15px;
+    padding-top: 10px;
+    color: #fff;
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.tweet {
+  display: flex;
+  padding: 20px;
+  &__wrap-content {
+    margin-left: 15px;
+    width: 100%;
+  }
+  &__input {
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    color: #fff;
+    background-color: transparent;
+    outline: none;
+  }
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__wrap-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  &__icon {
+    color: #e64398;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}

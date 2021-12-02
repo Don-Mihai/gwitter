@@ -1,0 +1,32 @@
+.register {
+  padding: 30px;
+  width: 50%;
+  box-sizing: border-box;
+
+  &__title {
+    font-size: 76px;
+  }
+
+  &__subtitle {
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+
+  &__agree {
+    font-size: 12px;
+
+    & a {
+      color: #b39bc8;
+    }
+  }
+
+  &__btn {
+    margin-bottom: 40px;
+  }
+
+  &__log-in {
+    & button {
+      color: #e64398;
+    }
+  }
+}

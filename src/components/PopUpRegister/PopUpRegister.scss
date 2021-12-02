@@ -1,0 +1,65 @@
+.popup {
+  position: absolute;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  &__title {
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+  }
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    margin: auto auto;
+    padding: 30px;
+    width: 600px;
+    border-radius: 20px;
+    background-color: #fff;
+    z-index: 10;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    margin-bottom: 20px;
+    padding: 18px 14px;
+    border: 1px solid grey;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+
+    &:hover {
+      border: 1px solid #000;
+    }
+
+    &:focus {
+      border: 1px solid rgb(29, 155, 240);
+      box-shadow: 0 0 0 1px rgb(29, 155, 240);
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+  }
+
+  &__text {
+    color: #000;
+    margin-bottom: 20px;
+  }
+
+  &__btn {
+    margin-top: 20px;
+  }
+}
