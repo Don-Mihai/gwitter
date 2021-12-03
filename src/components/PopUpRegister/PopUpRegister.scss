@@ -14,14 +14,44 @@
   }
 
   &__wrap {
+    position: relative;
+    display: flex;
+    margin: auto auto;
+    z-index: 10;
+    perspective: 1000px;
+  }
+
+  &__front {
     display: flex;
     flex-direction: column;
-    margin: auto auto;
     padding: 30px;
     width: 600px;
     border-radius: 20px;
     background-color: #fff;
-    z-index: 10;
+    transition: 1s ease-in-out transform;
+    backface-visibility: hidden;
+  }
+  &__back {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #fff;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+  &__rotate {
+    & .popup__front {
+      transition: 1s ease-in-out transform;
+      transform: rotateY(180deg);
+    }
+    & .popup__back {
+      transition: 1s ease-in-out transform;
+      transform: rotateY(360deg);
+    }
   }
 
   &__form {
