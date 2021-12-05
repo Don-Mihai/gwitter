@@ -6,6 +6,13 @@
   left: 0;
   right: 0;
 
+  &__errors-text {
+    color: #bf1650;
+    &::before {
+      display: inline;
+      content: "⚠ ";
+    }
+  }
   &__title {
     margin-bottom: 30px;
     font-size: 18px;
@@ -60,12 +67,14 @@
   }
 
   &__input {
-    margin-bottom: 20px;
     padding: 18px 14px;
     border: 1px solid grey;
     border-radius: 8px;
     font-size: 16px;
     outline: none;
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
 
     &:hover {
       border: 1px solid #000;
@@ -78,7 +87,7 @@
   }
 
   &__subtitle {
-    margin-bottom: 20px;
+    margin-top: 20px;
     font-size: 16px;
     font-weight: 700;
     color: #000;
