@@ -1,7 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Navigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser, setCurUser } from "../../redux/actions/user";
+import axios from "axios";
 
-function Back(props) {
+function Back({ regData }) {
+  const [isLogIn, setIsLogIn] = React.useState(false);
   const {
     register,
     formState: { errors },
@@ -9,11 +14,18 @@ function Back(props) {
   } = useForm({
     mode: "onChange",
   });
+
+  const dispatch = useDispatch();
+
   const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+    delete data.password2;
+    dispatch(addUser({ ...regData, ...data }));
+    dispatch(setCurUser(data));
+    setIsLogIn(true);
   };
   return (
     <div className="popup__back">
+      {isLogIn && <Navigate to="/home" />}
       <span className="popup__title">Создайте учетную запись</span>
       <form action="" className="popup__form" onSubmit={handleSubmit(onSubmit)}>
         <input
@@ -25,6 +37,21 @@ function Back(props) {
             maxLength: {
               value: 20,
               message: "Max length is 20",
+            },
+            validate: async (value) => {
+              const res = await axios
+                .get(`http://localhost:3001/users?login=${value}`)
+                .then(function (response) {
+                  if (response.data.length === 0) {
+                    return true;
+                  } else {
+                    return "Такой пользователь уже существует";
+                  }
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+              return res;
             },
           })}
         />

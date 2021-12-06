@@ -2,7 +2,7 @@ import React from "react";
 import { TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 
-function Front({ setRotate, rotate }) {
+function Front({ setRotate, rotate, setRegData }) {
   const {
     register,
     formState: { errors },
@@ -11,7 +11,7 @@ function Front({ setRotate, rotate }) {
     mode: "onChange",
   });
   const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+    setRegData(data);
     setRotate(!rotate);
   };
   return (

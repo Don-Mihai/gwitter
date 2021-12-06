@@ -1,19 +1,20 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "login": "admin",
+      "password": "00000000",
+      "name": "Михаил",
+      "surname": "Палиенко",
+      "date": "1999-11-11"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "firstName": "Mihai",
+      "lastName": "Palienko",
+      "date": "1999-11-19",
+      "login": "aaa",
+      "password": "aaaaaaaa",
+      "id": 2
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
