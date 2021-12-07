@@ -1,14 +1,8 @@
-export const addUser = (user) => ({
-  type: "ADD_USER",
-  payload: user,
+export const getLogin = (login) => ({
+  type: "GET_LOGIN",
+  payload: login,
 });
-
-export const setCurUser = (user) => ({
-  type: "SET_CURRENT_USER",
-  payload: user,
-});
-
-export const getUser = (data) => ({
+export const getUser = (user) => ({
   type: "GET_USER",
-  payload: data,
+  payload: user,
 });

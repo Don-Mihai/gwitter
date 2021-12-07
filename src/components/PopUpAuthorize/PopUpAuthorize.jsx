@@ -1,10 +1,8 @@
 import React from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import "./PopUpAuthorize.scss";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { getAllDataUser, getUser, setCurUser } from "../../redux/actions/user";
 
 function PopUpAuthorize({ handleToggle }) {
   const [isLogIn, setIsLogIn] = React.useState(false);
@@ -15,16 +13,8 @@ function PopUpAuthorize({ handleToggle }) {
   } = useForm({
     mode: "onChange",
   });
-  const dispatch = useDispatch();
-  const fetchAllDataUser = (login) => {
-    axios.get(`http://localhost:3001/users?login=${login}`).then((data) => {
-      dispatch(getUser(...data.data));
-    });
-  };
 
   const onSubmit = (data) => {
-    dispatch(setCurUser(data));
-    fetchAllDataUser(data.login);
     setIsLogIn(true);
   };
   return (

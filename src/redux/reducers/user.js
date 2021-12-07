@@ -1,33 +1,21 @@
-import axios from "axios";
-
 const initialState = {
-  curUser: {},
-  allDataUser: {},
+  login: "",
+  user: {},
 };
 const user = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_USER":
-      axios
-        .post("http://localhost:3001/users", action.payload)
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+    case "GET_LOGIN": {
       return {
         ...state,
-        allDataUser: action.payload,
+        login: action.payload,
       };
-    case "SET_CURRENT_USER":
-      return {
-        curUser: action.payload,
-      };
-    case "GET_USER":
+    }
+    case "GET_USER": {
       return {
         ...state,
-        allDataUser: action.payload,
+        user: action.payload,
       };
+    }
     default:
       return state;
   }

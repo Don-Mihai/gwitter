@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addUser, setCurUser } from "../../redux/actions/user";
+import { getLogin } from "../../redux/actions/user";
 import axios from "axios";
 
 function Back({ regData }) {
@@ -19,8 +19,8 @@ function Back({ regData }) {
 
   const onSubmit = (data) => {
     delete data.password2;
-    dispatch(addUser({ ...regData, ...data }));
-    dispatch(setCurUser(data));
+    axios.post(`http://localhost:3001/users`, { ...regData, ...data }).catch();
+    dispatch(getLogin(data?.login));
     setIsLogIn(true);
   };
   return (

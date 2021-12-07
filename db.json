@@ -1,20 +1,22 @@
 {
   "users": [
     {
-      "id": 1,
-      "login": "admin",
-      "password": "00000000",
-      "name": "Михаил",
-      "surname": "Палиенко",
-      "date": "1999-11-11"
-    },
-    {
       "firstName": "Mihai",
       "lastName": "Palienko",
       "date": "1999-11-19",
-      "login": "aaa",
-      "password": "aaaaaaaa",
+      "login": "admin",
+      "password": "00000000",
+      "posts": "mmmmmmmmmm",
+      "id": 1
+    },
+    {
+      "text": "aaaaaaaaaaaaa",
       "id": 2
+    },
+    {
+      "text": "eeeeeeeeeee",
+      "id": 3
     }
-  ]
+  ],
+  "posts": []
 }
