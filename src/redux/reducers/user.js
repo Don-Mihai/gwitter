@@ -1,6 +1,9 @@
 const initialState = {
   login: "",
-  user: {},
+  user: {
+    firstName: "example",
+    lastName: "example",
+  },
 };
 const user = (state = initialState, action) => {
   switch (action.type) {

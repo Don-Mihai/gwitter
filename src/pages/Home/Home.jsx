@@ -13,15 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 function Home() {
   const login = useSelector((state) => state?.user.login);
   const dispatch = useDispatch();
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3001/users?login=${login}`)
-      .then((data) => {
-        dispatch(getUser(...data.data));
-        console.log(...data.data, "получили пользователя");
-      })
-      .catch();
-  }, []);
+
   return (
     <div className="wraper">
       <div className="aside">

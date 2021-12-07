@@ -3,7 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import { useSelector } from "react-redux";
 
 function Post({ text = "" }) {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user.user);
   return (
     <article className="posts__post post">
       <div className="post__wrap-img">

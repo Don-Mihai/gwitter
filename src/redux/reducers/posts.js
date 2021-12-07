@@ -6,7 +6,7 @@ const posts = (state = initialState, action) => {
     case "GET_POSTS": {
       return {
         ...state,
-        posts: action.payload,
+        posts: action.payload.length === 0 ? [] : [action.payload],
       };
     }
     default:

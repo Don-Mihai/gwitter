@@ -6,16 +6,7 @@
       "date": "1999-11-19",
       "login": "admin",
       "password": "00000000",
-      "posts": "mmmmmmmmmm",
       "id": 1
-    },
-    {
-      "text": "aaaaaaaaaaaaa",
-      "id": 2
-    },
-    {
-      "text": "eeeeeeeeeee",
-      "id": 3
     }
   ],
   "posts": []

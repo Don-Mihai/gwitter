@@ -19,19 +19,17 @@ function Posts() {
   let availableText = 100 - tweetText.length;
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3001/posts/${user.id}`)
-      .then((data) => dispatch(getPosts(data.data)));
-  }, []);
-
   const onTweet = () => {
     axios
       .post(`http://localhost:3001/posts/`, {
         idUser: user.id,
         text: tweetText,
       })
-      .catch();
+      .then(() => {
+        return axios
+          .get(`http://localhost:3001/posts?idUser=${user.id}`)
+          .then((data) => dispatch(getPosts(data.data)));
+      });
   };
 
   return (
@@ -96,10 +94,10 @@ function Posts() {
           </div>
         </div>
       </div>
-      {/*{posts &&*/}
-      {/*  posts.map((item) => {*/}
-      {/*    return <Post key={item.id} text={item?.text} />;*/}
-      {/*  })}*/}
+      {posts &&
+        posts.map((item) => {
+          return <Post key={item.id} text={item?.text} />;
+        })}
     </main>
   );
 }

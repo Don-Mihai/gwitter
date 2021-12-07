@@ -1,9 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getLogin } from "../../redux/actions/user";
+import { useDispatch, useSelector } from "react-redux";
+import { getLogin, getUser } from "../../redux/actions/user";
 import axios from "axios";
+import { getPosts } from "../../redux/actions/posts";
 
 function Back({ regData }) {
   const [isLogIn, setIsLogIn] = React.useState(false);
@@ -19,7 +20,19 @@ function Back({ regData }) {
 
   const onSubmit = (data) => {
     delete data.password2;
-    axios.post(`http://localhost:3001/users`, { ...regData, ...data }).catch();
+    axios
+      .post(`http://localhost:3001/users`, { ...regData, ...data })
+      .then(() => {
+        return axios
+          .get(`http://localhost:3001/users?login=${data.login}`)
+          .then((data) => {
+            dispatch(getUser(...data.data));
+            return axios
+              .get(`http://localhost:3001/posts?idUser=${data.data[0].id}`)
+              .then((data) => dispatch(getPosts(data?.data)));
+          });
+      });
+
     dispatch(getLogin(data?.login));
     setIsLogIn(true);
   };
