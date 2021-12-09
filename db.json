@@ -7,6 +7,14 @@
       "login": "admin",
       "password": "00000000",
       "id": 1
+    },
+    {
+      "firstName": "лео",
+      "lastName": "фамилия",
+      "date": "1999-11-19",
+      "login": "root",
+      "password": "00000000",
+      "id": 2
     }
   ],
   "posts": [
@@ -24,6 +32,21 @@
       "idUser": 1,
       "text": "third commit",
       "id": 12
+    },
+    {
+      "idUser": 2,
+      "text": "first",
+      "id": 13
+    },
+    {
+      "idUser": 2,
+      "text": "sec",
+      "id": 14
+    },
+    {
+      "idUser": 2,
+      "text": "nothing",
+      "id": 15
     }
   ],
   "pinedPosts": [
@@ -36,6 +59,11 @@
       "idUser": 1,
       "text": "third commit",
       "id": 12
+    },
+    {
+      "idUser": 2,
+      "text": "first",
+      "id": 13
     }
   ]
 }

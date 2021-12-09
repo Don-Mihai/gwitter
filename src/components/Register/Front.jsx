@@ -23,10 +23,10 @@ function Front({ setRotate, rotate, setRegData }) {
           className="popup__input"
           placeholder="Имя"
           {...register("firstName", {
-            required: "this is a required",
+            required: "это обязательное поле",
             maxLength: {
               value: 20,
-              message: "Max length is 20",
+              message: "максимальная длина - 20",
             },
           })}
         />
@@ -40,10 +40,10 @@ function Front({ setRotate, rotate, setRegData }) {
           className="popup__input"
           placeholder="Фамилия"
           {...register("lastName", {
-            required: "this is a required",
+            required: "это обязательное поле",
             maxLength: {
               value: 20,
-              message: "Max length is 20",
+              message: "максимальная длина - 20",
             },
           })}
         />
@@ -63,7 +63,7 @@ function Front({ setRotate, rotate, setRegData }) {
           type="date"
           fullWidth
           {...register("date", {
-            required: "this is a required",
+            required: "это обязательное поле",
           })}
         />
         {errors.date && (

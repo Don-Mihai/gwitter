@@ -12,13 +12,15 @@ function Back({ regData }) {
     register,
     formState: { errors },
     handleSubmit,
+    watch,
   } = useForm({
     mode: "onChange",
   });
+  const password = watch("password");
 
   const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     delete data.password2;
     axios
       .post(`http://localhost:3001/users`, { ...regData, ...data })
@@ -40,14 +42,15 @@ function Back({ regData }) {
       <span className="popup__title">Создайте учетную запись</span>
       <form action="" className="popup__form" onSubmit={handleSubmit(onSubmit)}>
         <input
+          name="login"
           type="text"
           className="popup__input"
           placeholder="Логин"
           {...register("login", {
-            required: "this is a required",
+            required: "это обязательное поле",
             maxLength: {
               value: 20,
-              message: "Max length is 20",
+              message: "максимальная длина - 20",
             },
             validate: async (value) => {
               const res = await axios
@@ -70,18 +73,19 @@ function Back({ regData }) {
           <span className={"popup__errors-text"}>{errors.login.message}</span>
         )}
         <input
+          name="password"
           type="password"
           className="popup__input"
           placeholder="Пароль"
           {...register("password", {
-            required: "this is a required",
+            required: "это обязательное поле",
             minLength: {
               value: 8,
-              message: "Min length is 8",
+              message: "минимальная длина - 8",
             },
             maxLength: {
               value: 20,
-              message: "Max length is 20",
+              message: "максимальная длина - 20",
             },
           })}
         />
@@ -91,19 +95,13 @@ function Back({ regData }) {
           </span>
         )}
         <input
-          type="text"
+          name="password2"
+          type="password"
           className="popup__input"
           placeholder="Повторите пароль"
           {...register("password2", {
-            required: "this is a required",
-            minLength: {
-              value: 8,
-              message: "Min length is 8",
-            },
-            maxLength: {
-              value: 20,
-              message: "Max length is 20",
-            },
+            required: "это обязательное поле",
+            validate: (value) => value === password || "пароли не совпадают",
           })}
         />
         {errors.password2 && (

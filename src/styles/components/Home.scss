@@ -40,6 +40,14 @@
   &__tweet {
     width: 100%;
   }
+
+  &__input {
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+  }
 }
 
 .tweet {

@@ -7,10 +7,12 @@ import ListIcon from "@mui/icons-material/List";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { getAllPinPosts } from "../../redux/actions/posts";
+import { getSearchText } from "../../redux/actions/search";
 
 function Home() {
   const user = useSelector((state) => state.user?.user);
   const dispatch = useDispatch();
+
   useEffect(() => {
     axios
       .get(`http://localhost:3001/pinedPosts?idUser=${user.id}`)
@@ -20,32 +22,36 @@ function Home() {
       });
   });
 
+  const handleSearch = (event) => {
+    dispatch(getSearchText(event.target.value));
+  };
+
   return (
     <div className="wraper">
       <div className="aside">
         <nav className="nav">
           <Link className="nav__link btn" to="/">
             <HomeIcon className="nav__link-icon" />
-            Home
+            Главная
           </Link>
           <Link className="nav__link btn" to="/Bookmarks">
             <BookmarkBorderIcon className="nav__link-icon" />
-            Bookmarks
+            Закладки
           </Link>
           <Link className="nav__link btn" to="/Home">
             <PermIdentityIcon className="nav__link-icon" />
-            Profile
+            Профиль
           </Link>
           <Link className="nav__link btn" to="/Home">
             <ListIcon className="nav__link-icon" />
-            Subscriptions
+            Подписки
           </Link>
         </nav>
-        <button className="aside__tweet btn-reset btn">Tweet</button>
+        <button className="aside__tweet btn-reset btn">Гвитнуть</button>
       </div>
       <Outlet />
       <aside className="aside aside_right">
-        <input type="text" className="aside__input" />
+        <input type="text" className="aside__input" onChange={handleSearch} />
       </aside>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Box, IconButton, Popper, Avatar } from "@mui/material";
+import { Avatar, Box, IconButton, Popper } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
 import DeleteIcon from "@mui/icons-material/Delete";
 import PushPinIcon from "@mui/icons-material/PushPin";
@@ -54,11 +54,11 @@ function Post({ text = "", idPost }) {
                 onClick={handleDelete}
               >
                 <DeleteIcon />
-                <div>delete</div>
+                <div>удалить</div>
               </button>
               <button className="post__tool-item btn-reset" onClick={handlePin}>
                 <PushPinIcon />
-                <div>pin to bookmarks</div>
+                <div>прикрепить в закладки</div>
               </button>
             </Box>
           </Popper>

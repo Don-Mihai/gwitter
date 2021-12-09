@@ -12,6 +12,7 @@ function Posts() {
   const [tweetText, setTweetText] = React.useState("");
   const user = useSelector((state) => state.user?.user);
   const posts = useSelector((state) => state.posts?.posts);
+  const searchText = useSelector((state) => state.search?.text);
 
   const handleText = (event) => {
     setTweetText(event.target.value);
@@ -37,7 +38,7 @@ function Posts() {
     <main className="posts">
       <header className="posts__header">
         <div className="posts__header-top">
-          <span className="posts__header-title">Home</span>
+          <span className="posts__header-title">Главная</span>
         </div>
       </header>
       <div className="tweet">
@@ -52,7 +53,7 @@ function Posts() {
           <form action="">
             <textarea
               className="tweet__input"
-              placeholder="What`is happening?"
+              placeholder="Что случилось?"
               value={tweetText}
               onChange={handleText}
             />
@@ -92,16 +93,20 @@ function Posts() {
                 </Box>
               </Box>
               <button className="tweet__btn btn btn-reset" onClick={onTweet}>
-                Tweet
+                Гвитнуть
               </button>
             </div>
           </div>
         </div>
       </div>
       {posts &&
-        posts.map((item) => {
-          return <Post key={item.id} text={item?.text} idPost={item.id} />;
-        })}
+        posts
+          .filter((item) =>
+            item.text.toLowerCase().includes(searchText.toLowerCase())
+          )
+          .map((item) => {
+            return <Post key={item.id} text={item?.text} idPost={item.id} />;
+          })}
     </main>
   );
 }

@@ -50,7 +50,7 @@ function BookmarkPost({ text = "", idPinPost }) {
                 onClick={handleDelete}
               >
                 <DeleteIcon />
-                <div>delete</div>
+                <div>удалить</div>
               </button>
             </Box>
           </Popper>
