@@ -1,5 +1,4 @@
 import React from "react";
-import "./Footer.scss";
 
 export default function Footer() {
   return (
@@ -17,11 +16,11 @@ export default function Footer() {
         <li className="footer__item">Ресурсы бренда</li>
         <li className="footer__item">Реклама</li>
         <li className="footer__item">Маркетинг</li>
-        <li className="footer__item">Твиттер для бизнеса</li>
+        <li className="footer__item">Гвиттер для бизнеса</li>
         <li className="footer__item">Разработчикам</li>
         <li className="footer__item">Каталог</li>
         <li className="footer__item">Настройки</li>
-        <li className="footer__item">© Twitter, Inc., 2021.</li>
+        <li className="footer__item">© Gwitter, Inc., 2021.</li>
       </ul>
     </footer>
   );

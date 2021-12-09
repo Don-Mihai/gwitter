@@ -1,3 +1,4 @@
+@import "../variables";
 .register {
   padding: 30px;
   width: 50%;
@@ -26,7 +27,7 @@
 
   &__log-in {
     & button {
-      color: #e64398;
+      color: $main-color;
     }
   }
 }

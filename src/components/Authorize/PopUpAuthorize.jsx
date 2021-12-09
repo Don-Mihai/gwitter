@@ -1,8 +1,10 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import "./PopUpAuthorize.scss";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { getUser } from "../../redux/actions/user";
+import { useDispatch } from "react-redux";
+import { getPosts } from "../../redux/actions/posts";
 
 function PopUpAuthorize({ handleToggle }) {
   const [isLogIn, setIsLogIn] = React.useState(false);
@@ -13,13 +15,22 @@ function PopUpAuthorize({ handleToggle }) {
   } = useForm({
     mode: "onChange",
   });
+  const dispatch = useDispatch();
 
   const onSubmit = (data) => {
+    axios
+      .get(`http://localhost:3001/users?login=${data.login}`)
+      .then((data) => {
+        dispatch(getUser(...data.data));
+        return axios
+          .get(`http://localhost:3001/posts?idUser=${data.data[0].id}`)
+          .then((data) => dispatch(getPosts(data?.data)));
+      });
     setIsLogIn(true);
   };
   return (
     <div className="popup">
-      {isLogIn && <Navigate to="/home" />}
+      {isLogIn && <Navigate to="/" />}
       <div className="overlay" onClick={handleToggle} />
       <div className="popup__wrap auth-wrap">
         <span className="popup__title">Войдите в учетную запись</span>

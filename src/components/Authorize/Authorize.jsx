@@ -1,6 +1,5 @@
 import React from "react";
-import "./Authorize.scss";
-import PopUpAuthorize from "../PopUpAuthorize/PopUpAuthorize";
+import PopUpAuthorize from "./PopUpAuthorize";
 
 function Authorize({ handleClickToggle }) {
   const [toggle, setToggle] = React.useState(false);

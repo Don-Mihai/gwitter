@@ -1,6 +1,5 @@
 import React from "react";
-import "./Register.scss";
-import PopUpRegister from "../PopUpRegister/PopUpRegister";
+import PopUpRegister from "./PopUpRegister";
 
 function Register({ handleClickToggle }) {
   const [toggle, setToggle] = React.useState(false);

@@ -1,8 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getLogin, getUser } from "../../redux/actions/user";
+import { useDispatch } from "react-redux";
+import { getUser } from "../../redux/actions/user";
 import axios from "axios";
 import { getPosts } from "../../redux/actions/posts";
 
@@ -32,13 +32,11 @@ function Back({ regData }) {
               .then((data) => dispatch(getPosts(data?.data)));
           });
       });
-
-    dispatch(getLogin(data?.login));
     setIsLogIn(true);
   };
   return (
     <div className="popup__back">
-      {isLogIn && <Navigate to="/home" />}
+      {isLogIn && <Navigate to="/" />}
       <span className="popup__title">Создайте учетную запись</span>
       <form action="" className="popup__form" onSubmit={handleSubmit(onSubmit)}>
         <input

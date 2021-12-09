@@ -1,3 +1,4 @@
+@import "../variables";
 .popup {
   position: absolute;
   display: flex;
@@ -7,7 +8,7 @@
   right: 0;
 
   &__errors-text {
-    color: #bf1650;
+    color: $error-color;
     &::before {
       display: inline;
       content: "⚠ ";

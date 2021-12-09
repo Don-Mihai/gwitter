@@ -1,0 +1,87 @@
+.posts {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  border-right: 1px solid grey;
+  border-left: 1px solid grey;
+
+  &__post {
+    border-bottom: 1px solid grey;
+  }
+
+  & .tweet {
+    border: 1px solid grey;
+  }
+
+  &__header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid grey;
+  }
+
+  &__header-title {
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.post {
+  display: flex;
+  padding: 20px;
+
+  &__wrap-user {
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    margin-left: 15px;
+    width: 100%;
+  }
+
+  &__user-name {
+    margin: 0 10px 0 0;
+    color: #fff;
+  }
+
+  &__user-id {
+    color: grey;
+    flex-grow: 1;
+  }
+  &__user-tool {
+    display: flex;
+  }
+  &__tool-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid grey;
+    background-color: #000;
+  }
+  &__tool-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 0;
+    padding: 5px 15px;
+    color: #fff;
+    &:first-child {
+      color: red;
+    }
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+  &__content {
+    margin-bottom: 15px;
+    padding-top: 10px;
+    color: #fff;
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: space-between;
+  }
+}

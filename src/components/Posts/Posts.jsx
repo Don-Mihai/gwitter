@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Avatar from "@mui/material/Avatar";
 import ImageIcon from "@mui/icons-material/Image";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
@@ -26,6 +26,7 @@ function Posts() {
         text: tweetText,
       })
       .then(() => {
+        setTweetText("");
         return axios
           .get(`http://localhost:3001/posts?idUser=${user.id}`)
           .then((data) => dispatch(getPosts(data.data)));
@@ -41,7 +42,9 @@ function Posts() {
       </header>
       <div className="tweet">
         <div className="tweet__wrap-author">
-          <Avatar sx={{ width: 50, height: 50, bgcolor: "#a1c3d1" }}>
+          <Avatar
+            sx={{ width: 50, height: 50, bgcolor: "#f0ebf4", color: "#e64398" }}
+          >
             {user?.firstName[0] + "" + user?.lastName[0]}
           </Avatar>
         </div>
@@ -50,6 +53,7 @@ function Posts() {
             <textarea
               className="tweet__input"
               placeholder="What`is happening?"
+              value={tweetText}
               onChange={handleText}
             />
           </form>
@@ -96,7 +100,7 @@ function Posts() {
       </div>
       {posts &&
         posts.map((item) => {
-          return <Post key={item.id} text={item?.text} />;
+          return <Post key={item.id} text={item?.text} idPost={item.id} />;
         })}
     </main>
   );

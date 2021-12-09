@@ -9,5 +9,33 @@
       "id": 1
     }
   ],
-  "posts": []
+  "posts": [
+    {
+      "idUser": 1,
+      "text": "my commit",
+      "id": 10
+    },
+    {
+      "idUser": 1,
+      "text": "asda",
+      "id": 11
+    },
+    {
+      "idUser": 1,
+      "text": "third commit",
+      "id": 12
+    }
+  ],
+  "pinedPosts": [
+    {
+      "idUser": 1,
+      "text": "my commit",
+      "id": 10
+    },
+    {
+      "idUser": 1,
+      "text": "third commit",
+      "id": 12
+    }
+  ]
 }

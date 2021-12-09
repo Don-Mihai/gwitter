@@ -2,7 +2,7 @@ import React from "react";
 import Authorize from "../../components/Authorize/Authorize.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 import Register from "../../components/Register/Register.jsx";
-import "./Main.scss";
+import "../../styles/components/Main.scss";
 import { motion } from "framer-motion";
 
 export default function Main() {

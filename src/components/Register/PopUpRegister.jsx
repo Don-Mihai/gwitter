@@ -1,5 +1,4 @@
 import React from "react";
-import "./PopUpRegister.scss";
 import Front from "./Front";
 import Back from "./Back";
 import PropTypes from "prop-types";

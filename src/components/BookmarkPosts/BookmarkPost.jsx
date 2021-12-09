@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Box, IconButton, Popper, Avatar } from "@mui/material";
+import { Avatar, Box, IconButton, Popper } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
 import DeleteIcon from "@mui/icons-material/Delete";
-import PushPinIcon from "@mui/icons-material/PushPin";
-import { deletePost, pinPost } from "../../redux/actions/posts";
 
-function Post({ text = "", idPost }) {
+import { deletePinPost } from "../../redux/actions/posts";
+
+function BookmarkPost({ text = "", idPinPost }) {
   const user = useSelector((state) => state.user.user);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -15,12 +15,8 @@ function Post({ text = "", idPost }) {
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
-  const handlePin = () => {
-    dispatch(pinPost(idPost));
-  };
   const handleDelete = () => {
-    dispatch(deletePost(idPost));
-    console.log(idPost);
+    dispatch(deletePinPost(idPinPost));
   };
   const open = Boolean(anchorEl);
   const id = open ? "simple-popper" : undefined;
@@ -56,10 +52,6 @@ function Post({ text = "", idPost }) {
                 <DeleteIcon />
                 <div>delete</div>
               </button>
-              <button className="post__tool-item btn-reset" onClick={handlePin}>
-                <PushPinIcon />
-                <div>pin to bookmarks</div>
-              </button>
             </Box>
           </Popper>
         </div>
@@ -70,4 +62,4 @@ function Post({ text = "", idPost }) {
   );
 }
 
-export default Post;
+export default BookmarkPost;
