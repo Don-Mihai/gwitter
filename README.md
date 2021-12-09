@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Gwitter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Этот проект находится на стадии разработки...\
+Новые функции постоянно добавляются!\
+Номер телефона для поддержки проекта: `963 924 91 85` (сбер, тинькоф)
 
 ## Available Scripts
 
@@ -9,62 +11,29 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000/main/](http://localhost:3000/main) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+### `json-server`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+run json-server for start the server ;)\
+json-server --watch db.json --port=3001
 
-### `npm run build`
+### Modules and libraries
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[React](https://ru.reactjs.org/) + [Redux](https://redux.js.org/) + [redux-thunk](https://github.com/reduxjs/redux-thunk) + [react-router](https://reactrouter.com/) + [axios](https://axios-http.com/) + [json-server](https://www.npmjs.com/package/json-server) + [node-sass](https://www.npmjs.com/package/node-sass) + [framer-motion](https://www.framer.com/motion/) + [material ui](https://mui.com/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Реализованные функции
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Две разные странички для авторизации и регистрации, сами данные мы заполняем в модальном окне у которой есть крутая анимация. \
+Реализованна валидация, проверка на уже существующего пользователя, и все эти данные сверяются с сервером. \
 
-### `npm run eject`
+На главной страничке отображается меню, посты и сайдбар с поиском по постам.\
+Отображаемые посты зависят от конкретного пользователя. \
+Каждый пользователь получает с сервера только необходимую для него информацию, тоесть осуществленно разграничение данных для безопастности. \
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+У пользователя есть возможность добавлять, удалять посты, создавать закладки.
+При добавлении постов стоит ограничение на количество вводиммых символов сопроваждающееся красивой анимацией. \
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
