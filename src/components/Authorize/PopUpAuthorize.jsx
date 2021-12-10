@@ -30,7 +30,7 @@ function PopUpAuthorize({ handleToggle }) {
   };
   return (
     <div className="popup">
-      {isLogIn && <Navigate to="/" />}
+      {isLogIn && <Navigate to="Home" />}
       <div className="overlay" onClick={handleToggle} />
       <div className="popup__wrap auth-wrap">
         <span className="popup__title">Войдите в учетную запись</span>

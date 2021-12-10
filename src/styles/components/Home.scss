@@ -43,10 +43,31 @@
 
   &__input {
     width: 100%;
+    margin-bottom: 30px;
     padding: 5px 10px;
     border-radius: 20px;
     border: none;
     outline: none;
+  }
+  &__subscribes {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #333;
+    &-title {
+      margin-bottom: 20px;
+      font-size: 24px;
+      font-weight: normal;
+      color: #fff;
+    }
+  }
+  &__subscribe-item {
+    display: flex;
+    align-items: center;
+  }
+  &__subscribe-category {
+    flex-grow: 1;
+    margin-left: 10px;
+    color: #fff;
   }
 }
 
@@ -80,5 +101,15 @@
     &:not(:last-child) {
       margin-right: 10px;
     }
+  }
+  &__img-subtitle {
+    margin-bottom: 20px;
+    font-weight: normal;
+    color: #fff;
+  }
+  &__tool-box {
+    padding: 20px 20px 0 20px;
+    border: 1px solid #333;
+    background-color: #000;
   }
 }

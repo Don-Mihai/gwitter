@@ -6,7 +6,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import PushPinIcon from "@mui/icons-material/PushPin";
 import { deletePost, pinPost } from "../../redux/actions/posts";
 
-function Post({ text = "", idPost }) {
+function Post({ text = "", idPost, urlImg }) {
   const user = useSelector((state) => state.user.user);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -64,6 +64,7 @@ function Post({ text = "", idPost }) {
           </Popper>
         </div>
         <div className="post__content">{text}</div>
+        <img src={urlImg} alt="" className="post__img" />
         <div className="post__icons">i</div>
       </div>
     </article>

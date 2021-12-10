@@ -19,3 +19,7 @@ body {
   color: #fff;
   background-color: $main-color;
 }
+
+textarea {
+  resize: vertical;
+}

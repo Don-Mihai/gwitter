@@ -23,6 +23,7 @@ function BookmarkPosts() {
                 key={item.id}
                 text={item?.text}
                 idPinPost={item.id}
+                urlImg={item?.urlImg}
               />
             );
           })}

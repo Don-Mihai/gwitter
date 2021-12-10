@@ -6,7 +6,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 import { deletePinPost } from "../../redux/actions/posts";
 
-function BookmarkPost({ text = "", idPinPost }) {
+function BookmarkPost({ text = "", idPinPost, urlImg }) {
   const user = useSelector((state) => state.user.user);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -56,6 +56,7 @@ function BookmarkPost({ text = "", idPinPost }) {
           </Popper>
         </div>
         <div className="post__content">{text}</div>
+        <img src={urlImg} alt="" className="post__img" />
         <div className="post__icons">i</div>
       </div>
     </article>

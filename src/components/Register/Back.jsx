@@ -38,7 +38,7 @@ function Back({ regData }) {
   };
   return (
     <div className="popup__back">
-      {isLogIn && <Navigate to="/" />}
+      {isLogIn && <Navigate to="Home" />}
       <span className="popup__title">Создайте учетную запись</span>
       <form action="" className="popup__form" onSubmit={handleSubmit(onSubmit)}>
         <input
