@@ -20,7 +20,6 @@ function Post({ text = "", idPost, urlImg }) {
   };
   const handleDelete = () => {
     dispatch(deletePost(idPost));
-    console.log(idPost);
   };
   const open = Boolean(anchorEl);
   const id = open ? "simple-popper" : undefined;
