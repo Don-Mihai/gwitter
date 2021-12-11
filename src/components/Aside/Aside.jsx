@@ -2,13 +2,14 @@ import React from "react";
 import { Avatar, Switch } from "@mui/material";
 import { getSearchText } from "../../redux/actions/search";
 import { useDispatch } from "react-redux";
+import { setCheckBusido } from "../../redux/actions/category";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
 function Aside() {
   const dispatch = useDispatch();
   const handleCheckBusido = (event) => {
-    console.log(event.target.checked, "event");
+    dispatch(setCheckBusido(event.target.checked));
   };
 
   const handleSearch = (event) => {
@@ -30,12 +31,7 @@ function Aside() {
             }}
           />
           <div className="aside__subscribe-category">Busido</div>
-          <Switch
-            {...label}
-            defaultChecked
-            color="secondary"
-            onChange={handleCheckBusido}
-          />
+          <Switch {...label} color="secondary" onChange={handleCheckBusido} />
         </div>
       </div>
     </aside>
