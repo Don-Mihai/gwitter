@@ -5,7 +5,7 @@ import Posts from "./components/Posts/Posts";
 import BookmarkPosts from "./components/BookmarkPosts/BookmarkPosts";
 import Main from "./pages/Main/Main";
 import Subscribes from "./components/Subscribes/Subscribes";
-import User from "./components/User/User";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   return (
@@ -16,12 +16,13 @@ function App() {
           <Route path="Home" element={<Posts />} />
           <Route path="Bookmarks" element={<BookmarkPosts />} />
           <Route path="Subscribes" element={<Subscribes />} />
-          <Route path="User" element={<User />} />
+          <Route path="Profile" element={<Profile />} />
         </Route>
       </Routes>
     </div>
   );
 }
+
 export default App;
 
 function Layout() {

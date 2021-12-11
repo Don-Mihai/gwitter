@@ -53,7 +53,7 @@ function Home() {
             <BookmarkBorderIcon className="nav__link-icon" />
             Закладки
           </Link>
-          <Link className="nav__link btn" to="/User">
+          <Link className="nav__link btn" to="/Profile">
             <PermIdentityIcon className="nav__link-icon" />
             Профиль
           </Link>
