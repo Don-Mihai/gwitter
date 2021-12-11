@@ -33,7 +33,6 @@ function Home() {
     axios
       .get(`http://localhost:3001/pinedPosts?idUser=${user.id}`)
       .then((data) => {
-        console.log(data.data, "allPinPosts");
         dispatch(getAllPinPosts(data.data));
       });
   });
