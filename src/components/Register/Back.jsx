@@ -21,15 +21,11 @@ function Back({ regData }) {
 
   const onSubmit = (data) => {
     delete data.password2;
-    axios
-      .post(`http://localhost:3001/users`, { ...regData, ...data })
-      .then(() => {
-        return axios
-          .get(`http://localhost:3001/users?login=${data.login}`)
-          .then((data) => {
-            dispatch(getCurUser(...data.data));
-          });
+    axios.post(`/users`, { ...regData, ...data }).then(() => {
+      return axios.get(`/users?login=${data.login}`).then((data) => {
+        dispatch(getCurUser(...data.data));
       });
+    });
     setIsLogIn(true);
   };
   return (
@@ -50,7 +46,7 @@ function Back({ regData }) {
             },
             validate: async (value) => {
               const res = await axios
-                .get(`http://localhost:3001/users?login=${value}`)
+                .get(`/users?login=${value}`)
                 .then(function (response) {
                   if (response.data.length === 0) {
                     return true;

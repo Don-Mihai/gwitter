@@ -16,26 +16,20 @@ function BookmarkPosts() {
   const dispatch = useDispatch();
   useEffect(() => {
     axios
-      .get(
-        `http://localhost:3001/users?login=${sessionStorage.getItem(
-          "curLogin"
-        )}`
-      )
+      .get(`/users?login=${sessionStorage.getItem("curLogin")}`)
       .then((data) => {
         dispatch(getCurUser(...data.data));
       })
       .then(() => {
-        axios.get(`http://localhost:3001/Users`).then((data) => {
+        axios.get(`/Users`).then((data) => {
           dispatch(getAllUsers(data?.data));
         });
       });
   }, []);
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/pinedPosts?idUser=${curUser.id}`)
-      .then((data) => {
-        dispatch(getAllPinPosts(data.data));
-      });
+    axios.get(`/pinedPosts?idUser=${curUser.id}`).then((data) => {
+      dispatch(getAllPinPosts(data.data));
+    });
   }, [curUser]);
   return (
     <main className="posts">

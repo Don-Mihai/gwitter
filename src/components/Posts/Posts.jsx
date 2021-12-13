@@ -14,11 +14,9 @@ function Posts() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    axios.get(`http://localhost:3001/Users`).then((data) => {
+    axios.get(`/Users`).then((data) => {
       dispatch(getAllUsers(data?.data));
-      return axios
-        .get(`http://localhost:3001/posts`)
-        .then((data) => dispatch(getPosts(data?.data)));
+      return axios.get(`/posts`).then((data) => dispatch(getPosts(data?.data)));
     });
   }, []);
 

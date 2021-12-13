@@ -15,11 +15,7 @@ function Tweet() {
 
   useEffect(() => {
     axios
-      .get(
-        `http://localhost:3001/users?login=${sessionStorage.getItem(
-          "curLogin"
-        )}`
-      )
+      .get(`/users?login=${sessionStorage.getItem("curLogin")}`)
       .then((data) => {
         dispatch(getCurUser(...data.data));
       });
@@ -46,7 +42,7 @@ function Tweet() {
 
   const onTweet = () => {
     axios
-      .post(`http://localhost:3001/posts/`, {
+      .post(`/posts/`, {
         idUser: user.id,
         text: tweetText,
         urlImg: tweetImg,
@@ -54,7 +50,7 @@ function Tweet() {
       .then(() => {
         setTweetText("");
         return axios
-          .get(`http://localhost:3001/posts?idUser=${user?.id}`)
+          .get(`/posts?idUser=${user?.id}`)
           .then((data) => dispatch(getPosts(data.data)));
       });
     setAnchorEl(null);

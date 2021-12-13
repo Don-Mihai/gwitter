@@ -17,11 +17,9 @@ function PopUpAuthorize({ handleToggle }) {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    axios
-      .get(`http://localhost:3001/users?login=${data.login}`)
-      .then((data) => {
-        dispatch(getCurUser(...data.data));
-      });
+    axios.get(`/users?login=${data.login}`).then((data) => {
+      dispatch(getCurUser(...data.data));
+    });
     sessionStorage.setItem("curLogin", data.login);
     setIsLogIn(true);
   };

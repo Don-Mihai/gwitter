@@ -27,7 +27,7 @@ const posts = (state = initialState, action) => {
       const filteredPosts = state.posts.filter(
         (item) => item.id !== action.payload
       );
-      axios.delete(`http://localhost:3001/posts/${action.payload}`).catch();
+      axios.delete(`/posts/${action.payload}`).catch();
       return {
         ...state,
         posts: filteredPosts,
@@ -43,7 +43,7 @@ const posts = (state = initialState, action) => {
       const pinedPost = state.posts.filter(
         (item) => item.id === action.payload
       );
-      axios.post(`http://localhost:3001/pinedPosts`, ...pinedPost).catch();
+      axios.post(`/pinedPosts`, ...pinedPost).catch();
       return {
         ...state,
         pinPosts: [...state.pinPosts, ...pinedPost],
@@ -60,9 +60,7 @@ const posts = (state = initialState, action) => {
       const deletedPinPosts = state.pinPosts.filter(
         (item) => item.id !== action.payload
       );
-      axios
-        .delete(`http://localhost:3001/pinedPosts/${action.payload}`)
-        .catch();
+      axios.delete(`/pinedPosts/${action.payload}`).catch();
       return {
         ...state,
         pinPosts: deletedPinPosts,

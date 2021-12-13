@@ -38,27 +38,21 @@ function Profile() {
   const onSubmit = (data) => {
     //редактирую данные на сервере и после этого получаю обратно данные с сервера и обновляю их и локально
     axios
-      .put(`http://localhost:3001/users/${curUser.id}`, {
+      .put(`/users/${curUser.id}`, {
         ...curUser,
         ...data,
       })
       .then(() => {
-        return axios
-          .get(`http://localhost:3001/users?login=${curUser.login}`)
-          .then((data) => {
-            dispatch(getCurUser(...data.data));
-          });
+        return axios.get(`/users?login=${curUser.login}`).then((data) => {
+          dispatch(getCurUser(...data.data));
+        });
       });
     setOpen(false);
   };
 
   useEffect(() => {
     axios
-      .get(
-        `http://localhost:3001/users?login=${sessionStorage.getItem(
-          "curLogin"
-        )}`
-      )
+      .get(`/users?login=${sessionStorage.getItem("curLogin")}`)
       .then((data) => {
         dispatch(getCurUser(...data.data));
       });
