@@ -1,10 +1,42 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import BookmarkPost from "./BookmarkPost";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Post from "../Posts/Post";
+import axios from "axios";
+import { getAllUsers, getCurUser } from "../../redux/actions/user";
+import { getAllPinPosts } from "../../redux/actions/posts";
 
 function BookmarkPosts() {
-  const pinPosts = useSelector((state) => state.posts.pinPosts);
+  const pinPosts = useSelector((state) => state.posts?.pinPosts);
+  const isLoadedPinPosts = useSelector(
+    (state) => state.posts?.isLoadedPinPosts
+  );
   const searchText = useSelector((state) => state.search?.text);
+
+  const curUser = useSelector((state) => state.user?.curUser);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    axios
+      .get(
+        `http://localhost:3001/users?login=${sessionStorage.getItem(
+          "curLogin"
+        )}`
+      )
+      .then((data) => {
+        dispatch(getCurUser(...data.data));
+      })
+      .then(() => {
+        axios.get(`http://localhost:3001/Users`).then((data) => {
+          dispatch(getAllUsers(data?.data));
+        });
+      });
+  }, []);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3001/pinedPosts?idUser=${curUser.id}`)
+      .then((data) => {
+        dispatch(getAllPinPosts(data.data));
+      });
+  }, [curUser]);
   return (
     <main className="posts">
       <header className="posts__header">
@@ -12,17 +44,18 @@ function BookmarkPosts() {
           <span className="posts__header-title">Закладки</span>
         </div>
       </header>
-      {pinPosts &&
+      {isLoadedPinPosts &&
         pinPosts
           .filter((item) =>
             item.text.toLowerCase().includes(searchText.toLowerCase())
           )
           .map((item) => {
             return (
-              <BookmarkPost
+              <Post
                 key={item.id}
                 text={item?.text}
-                idPinPost={item.id}
+                idPost={item.id}
+                idUser={item.idUser}
                 urlImg={item?.urlImg}
               />
             );

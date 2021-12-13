@@ -2,14 +2,25 @@ import axios from "axios";
 
 const initialState = {
   posts: [],
+  myPosts: [],
   pinPosts: [],
+  isLoaded: false,
+  isLoadedPinPosts: false,
 };
 const posts = (state = initialState, action) => {
   switch (action.type) {
     case "GET_POSTS": {
+      function sortArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      }
       return {
         ...state,
-        posts: action.payload,
+        posts: sortArray(action.payload),
+        isLoaded: true,
       };
     }
     case "DELETE_POST": {
@@ -42,6 +53,7 @@ const posts = (state = initialState, action) => {
       return {
         ...state,
         pinPosts: action.payload,
+        isLoadedPinPosts: true,
       };
     }
     case "DELETE_PIN_POST": {

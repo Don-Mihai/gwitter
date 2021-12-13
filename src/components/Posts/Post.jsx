@@ -5,9 +5,16 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import DeleteIcon from "@mui/icons-material/Delete";
 import PushPinIcon from "@mui/icons-material/PushPin";
 import { deletePost, pinPost } from "../../redux/actions/posts";
+import CommentIcon from "@mui/icons-material/Comment";
+import IosShareIcon from "@mui/icons-material/IosShare";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 
-function Post({ text = "", idPost, urlImg }) {
-  const user = useSelector((state) => state.user.user);
+function Post({ text = "", idPost, urlImg, idUser }) {
+  const users = useSelector((state) => state.user?.users);
+  const curUser = useSelector((state) => state.user?.curUser);
+  const isLoadedUsers = useSelector((state) => state.user?.isLoadedUsers);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const dispatch = useDispatch();
@@ -19,7 +26,11 @@ function Post({ text = "", idPost, urlImg }) {
     dispatch(pinPost(idPost));
   };
   const handleDelete = () => {
-    dispatch(deletePost(idPost));
+    curUser.id === idUser
+      ? dispatch(deletePost(idPost))
+      : alert(
+          "Вы пытаетесь удалить чужой пост! Скрытие постов чужих пользователей еще не реализованно, но вы можете убрать пользователя из подписок."
+        );
   };
   const open = Boolean(anchorEl);
   const id = open ? "simple-popper" : undefined;
@@ -29,15 +40,23 @@ function Post({ text = "", idPost, urlImg }) {
         <Avatar
           sx={{ width: 50, height: 50, bgcolor: "#f0ebf4", color: "#e64398" }}
         >
-          {user?.firstName[0] + "" + user?.lastName[0]}
+          {isLoadedUsers &&
+            users.find((item) => item.id === idUser).firstName[0] +
+              "" +
+              users.find((item) => item.id === idUser).lastName[0]}
         </Avatar>
       </div>
       <div className="post__text">
         <div className="post__wrap-user">
           <h4 className="post__user-name">
-            {user.firstName + " " + user.lastName}
+            {isLoadedUsers &&
+              users.find((item) => item.id === idUser).firstName +
+                " " +
+                users.find((item) => item.id === idUser).lastName}
           </h4>
-          <span className="post__user-id">{"@" + user.login}</span>
+          <span className="post__user-id">
+            {"@" + users.find((item) => item.id === idUser).login}
+          </span>
           <IconButton
             aria-describedby={id}
             aria-label="Example"
@@ -64,7 +83,20 @@ function Post({ text = "", idPost, urlImg }) {
         </div>
         <div className="post__content">{text}</div>
         <img src={urlImg} alt="" className="post__img" />
-        <div className="post__icons">i</div>
+        <div className="post__icons">
+          <IconButton sx={{ color: "#888" }}>
+            <CommentIcon />
+          </IconButton>
+          <IconButton sx={{ color: "#888" }}>
+            <KeyboardReturnIcon />
+          </IconButton>
+          <IconButton sx={{ color: "#888" }}>
+            <FavoriteBorderIcon />
+          </IconButton>
+          <IconButton sx={{ color: "#888" }}>
+            <IosShareIcon />
+          </IconButton>
+        </div>
       </div>
     </article>
   );

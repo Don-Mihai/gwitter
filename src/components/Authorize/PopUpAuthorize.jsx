@@ -2,9 +2,8 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { getUser } from "../../redux/actions/user";
+import { getCurUser } from "../../redux/actions/user";
 import { useDispatch } from "react-redux";
-import { getPosts } from "../../redux/actions/posts";
 
 function PopUpAuthorize({ handleToggle }) {
   const [isLogIn, setIsLogIn] = React.useState(false);
@@ -21,11 +20,9 @@ function PopUpAuthorize({ handleToggle }) {
     axios
       .get(`http://localhost:3001/users?login=${data.login}`)
       .then((data) => {
-        dispatch(getUser(...data.data));
-        return axios
-          .get(`http://localhost:3001/posts?idUser=${data.data[0].id}`)
-          .then((data) => dispatch(getPosts(data?.data)));
+        dispatch(getCurUser(...data.data));
       });
+    sessionStorage.setItem("curLogin", data.login);
     setIsLogIn(true);
   };
   return (

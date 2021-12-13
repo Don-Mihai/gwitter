@@ -4,4 +4,32 @@
     height: 150px;
     background: linear-gradient(130.02deg, #e8cafb 0.66%, #8a87c1 83.32%);
   }
+  &__wrap {
+    position: relative;
+    padding-top: 50px;
+    padding-left: 15px;
+  }
+  &__user-name {
+    color: #fff;
+  }
+  &__login {
+    margin-bottom: 15px;
+    color: #888;
+  }
+  &__date-wrap {
+    display: flex;
+    gap: 10px;
+    color: #888;
+  }
+  &__btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border: 1px solid #fff;
+    background-color: transparent;
+  }
+  &__pupup-title {
+    margin-bottom: 20px;
+    color: #fff;
+  }
 }

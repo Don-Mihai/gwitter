@@ -1,38 +1,44 @@
 import React from "react";
-import { Avatar, Switch } from "@mui/material";
 import { getSearchText } from "../../redux/actions/search";
-import { useDispatch } from "react-redux";
-import { setCheckBusido } from "../../redux/actions/category";
-
-const label = { inputProps: { "aria-label": "Switch demo" } };
+import { useDispatch, useSelector } from "react-redux";
+import Subscriber from "./Subscriber";
 
 function Aside() {
+  const users = useSelector((state) => state.user?.users);
+  const isLoadedUsers = useSelector((state) => state.user?.isLoadedUsers);
   const dispatch = useDispatch();
-  const handleCheckBusido = (event) => {
-    dispatch(setCheckBusido(event.target.checked));
-  };
 
   const handleSearch = (event) => {
     dispatch(getSearchText(event.target.value));
   };
   return (
     <aside className="aside aside_right">
-      <input type="text" className="aside__input" onChange={handleSearch} />
+      <input
+        className="aside__input"
+        type="text"
+        placeholder={"Поиск..."}
+        onChange={handleSearch}
+      />
       <div className="aside__subscribes">
         <h3 className="aside__subscribes-title">Подписки</h3>
-        <div className="aside__subscribe-item">
-          <Avatar
-            src={"/busido.jfif"}
-            sx={{
-              width: 50,
-              height: 50,
-              bgcolor: "#f0ebf4",
-              color: "#e64398",
-            }}
-          />
-          <div className="aside__subscribe-category">Busido</div>
-          <Switch {...label} color="secondary" onChange={handleCheckBusido} />
-        </div>
+        {isLoadedUsers &&
+          users &&
+          users.map((item) => {
+            return (
+              <Subscriber
+                key={item.id}
+                firstName={item.firstName}
+                lastName={item.lastName}
+                login={item.login}
+                id={item.id}
+              />
+            );
+          })}
+      </div>
+      <div className="aside__subscribes">
+        <h3 className="aside__subscribes-title">
+          Здесь могла бы быть ваша реклама!
+        </h3>
       </div>
     </aside>
   );

@@ -1,8 +1,8 @@
 {
   "users": [
     {
-      "firstName": "Mihai",
-      "lastName": "Palienko",
+      "firstName": "Михаил",
+      "lastName": "Палиенко",
       "date": "1999-11-19",
       "login": "admin",
       "password": "00000000",
@@ -87,6 +87,16 @@
       "text": "много котиков не бывает",
       "urlImg": "https://ichef.bbci.co.uk/news/640/cpsprodpb/14236/production/_104368428_gettyimages-543560762.jpg",
       "id": 24
+    },
+    {
+      "idUser": 2,
+      "text": "sec",
+      "id": 14
+    },
+    {
+      "idUser": 2,
+      "text": "nothing",
+      "id": 15
     }
   ],
   "busido": [

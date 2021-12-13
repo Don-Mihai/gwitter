@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import ImageIcon from "@mui/icons-material/Image";
 import { Box, CircularProgress, IconButton, Popper } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { getPosts } from "../../redux/actions/posts";
+import { getCurUser } from "../../redux/actions/user";
 
 function Tweet() {
   const [tweetText, setTweetText] = React.useState("");
   const [tweetImg, setTweetImg] = React.useState("");
-  const user = useSelector((state) => state.user?.user);
+  const user = useSelector((state) => state.user?.curUser);
+  const isLoaded = useSelector((state) => state.user?.isLoaded);
+
+  useEffect(() => {
+    axios
+      .get(
+        `http://localhost:3001/users?login=${sessionStorage.getItem(
+          "curLogin"
+        )}`
+      )
+      .then((data) => {
+        dispatch(getCurUser(...data.data));
+      });
+  }, []);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -40,7 +54,7 @@ function Tweet() {
       .then(() => {
         setTweetText("");
         return axios
-          .get(`http://localhost:3001/posts?idUser=${user.id}`)
+          .get(`http://localhost:3001/posts?idUser=${user?.id}`)
           .then((data) => dispatch(getPosts(data.data)));
       });
     setAnchorEl(null);
@@ -52,7 +66,7 @@ function Tweet() {
         <Avatar
           sx={{ width: 50, height: 50, bgcolor: "#f0ebf4", color: "#e64398" }}
         >
-          {user?.firstName[0] + "" + user?.lastName[0]}
+          {isLoaded && user?.firstName[0] + "" + user?.lastName[0]}
         </Avatar>
       </div>
       <div className="tweet__wrap-content">

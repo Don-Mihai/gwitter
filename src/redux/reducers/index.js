@@ -2,13 +2,13 @@ import { combineReducers } from "redux";
 import user from "./user";
 import posts from "./posts";
 import search from "./search";
-import category from "./category";
+import subscribes from "./subscribes";
 
 const rootReducer = combineReducers({
   user,
   posts,
   search,
-  category,
+  subscribes,
 });
 
 export default rootReducer;
