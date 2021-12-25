@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { getCurUser } from "../../redux/actions/user";
+import { fetchCurUser } from "../../redux/actions/user";
 import { useDispatch } from "react-redux";
 
 function PopUpAuthorize({ handleToggle }) {
@@ -17,10 +17,8 @@ function PopUpAuthorize({ handleToggle }) {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    axios.get(`/users?login=${data.login}`).then((data) => {
-      dispatch(getCurUser(...data.data));
-    });
     sessionStorage.setItem("curLogin", data.login);
+    dispatch(fetchCurUser(data.login));
     setIsLogIn(true);
   };
   return (

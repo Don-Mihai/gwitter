@@ -1,3 +1,9 @@
+import axios from "axios";
+
+export const fetchAllPosts = () => (dispatch) => {
+  axios.get(`/posts`).then((data) => dispatch(getPosts(data?.data)));
+};
+
 export const getPosts = (posts) => ({
   type: "GET_POSTS",
   payload: posts,

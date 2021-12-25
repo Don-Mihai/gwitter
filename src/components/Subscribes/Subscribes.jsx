@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Post from "../Posts/Post";
-import axios from "axios";
-import { getAllUsers } from "../../redux/actions/user";
-import { getPosts } from "../../redux/actions/posts";
+import { fetchAllUsers } from "../../redux/actions/user";
+import { fetchAllPosts } from "../../redux/actions/posts";
 
 function Subscribes() {
   const searchText = useSelector((state) => state.search?.text);
@@ -13,10 +12,8 @@ function Subscribes() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    axios.get(`/Users`).then((data) => {
-      dispatch(getAllUsers(data?.data));
-      return axios.get(`/posts`).then((data) => dispatch(getPosts(data?.data)));
-    });
+    dispatch(fetchAllUsers());
+    dispatch(fetchAllPosts());
   }, []);
 
   return (

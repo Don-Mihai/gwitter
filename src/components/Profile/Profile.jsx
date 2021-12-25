@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Avatar, Box, Modal } from "@mui/material";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import axios from "axios";
-import { getCurUser } from "../../redux/actions/user";
+import { fetchCurUser } from "../../redux/actions/user";
 import styled from "@emotion/styled";
 import { useForm } from "react-hook-form";
 
@@ -35,28 +35,20 @@ function Profile() {
   } = useForm({
     mode: "onChange",
   });
+
+  useEffect(() => {
+    fetchCurUser(null);
+  }, []);
   const onSubmit = (data) => {
-    //редактирую данные на сервере и после этого получаю обратно данные с сервера и обновляю их и локально
+    //редактирую данные на сервере и после этого получаю обратно данные с сервера и обновляю их локально
     axios
       .put(`/users/${curUser.id}`, {
         ...curUser,
         ...data,
       })
-      .then(() => {
-        return axios.get(`/users?login=${curUser.login}`).then((data) => {
-          dispatch(getCurUser(...data.data));
-        });
-      });
+      .then(() => dispatch(fetchCurUser(curUser.login)));
     setOpen(false);
   };
-
-  useEffect(() => {
-    axios
-      .get(`/users?login=${sessionStorage.getItem("curLogin")}`)
-      .then((data) => {
-        dispatch(getCurUser(...data.data));
-      });
-  }, []);
 
   return (
     <main className="profile posts">

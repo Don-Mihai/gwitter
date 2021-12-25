@@ -4,8 +4,8 @@ import ImageIcon from "@mui/icons-material/Image";
 import { Box, CircularProgress, IconButton, Popper } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { getPosts } from "../../redux/actions/posts";
-import { getCurUser } from "../../redux/actions/user";
+import { fetchAllPosts } from "../../redux/actions/posts";
+import { fetchCurUser } from "../../redux/actions/user";
 
 function Tweet() {
   const [tweetText, setTweetText] = React.useState("");
@@ -14,11 +14,7 @@ function Tweet() {
   const isLoaded = useSelector((state) => state.user?.isLoaded);
 
   useEffect(() => {
-    axios
-      .get(`/users?login=${sessionStorage.getItem("curLogin")}`)
-      .then((data) => {
-        dispatch(getCurUser(...data.data));
-      });
+    dispatch(fetchCurUser(null));
   }, []);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -49,9 +45,7 @@ function Tweet() {
       })
       .then(() => {
         setTweetText("");
-        return axios
-          .get(`/posts?idUser=${user?.id}`)
-          .then((data) => dispatch(getPosts(data.data)));
+        return dispatch(fetchAllPosts());
       });
     setAnchorEl(null);
   };

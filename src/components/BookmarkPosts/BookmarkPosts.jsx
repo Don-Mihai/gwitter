@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Post from "../Posts/Post";
 import axios from "axios";
-import { getAllUsers, getCurUser } from "../../redux/actions/user";
+import { fetchAllUsers, fetchCurUser } from "../../redux/actions/user";
 import { getAllPinPosts } from "../../redux/actions/posts";
 
 function BookmarkPosts() {
@@ -15,16 +15,8 @@ function BookmarkPosts() {
   const curUser = useSelector((state) => state.user?.curUser);
   const dispatch = useDispatch();
   useEffect(() => {
-    axios
-      .get(`/users?login=${sessionStorage.getItem("curLogin")}`)
-      .then((data) => {
-        dispatch(getCurUser(...data.data));
-      })
-      .then(() => {
-        axios.get(`/Users`).then((data) => {
-          dispatch(getAllUsers(data?.data));
-        });
-      });
+    dispatch(fetchCurUser(null));
+    dispatch(fetchAllUsers());
   }, []);
   useEffect(() => {
     axios.get(`/pinedPosts?idUser=${curUser.id}`).then((data) => {

@@ -2,9 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Post from "./Post";
 import Tweet from "../Tweet/Tweet";
-import axios from "axios";
-import { getPosts } from "../../redux/actions/posts";
-import { getAllUsers } from "../../redux/actions/user";
+import { fetchAllPosts } from "../../redux/actions/posts";
+import { fetchAllUsers } from "../../redux/actions/user";
 
 function Posts() {
   const posts = useSelector((state) => state.posts?.posts);
@@ -14,10 +13,8 @@ function Posts() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    axios.get(`/Users`).then((data) => {
-      dispatch(getAllUsers(data?.data));
-      return axios.get(`/posts`).then((data) => dispatch(getPosts(data?.data)));
-    });
+    dispatch(fetchAllUsers());
+    dispatch(fetchAllPosts());
   }, []);
 
   return (
