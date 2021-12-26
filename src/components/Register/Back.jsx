@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { fetchCurUser } from "../../redux/actions/user";
 import axios from "axios";
 
-function Back({ regData }) {
+const Back = React.memo(({ regData }) => {
   const [isLogIn, setIsLogIn] = React.useState(false);
   const {
     register,
@@ -106,6 +106,6 @@ function Back({ regData }) {
       </form>
     </div>
   );
-}
+});
 
 export default Back;

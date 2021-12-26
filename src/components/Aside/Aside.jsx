@@ -3,7 +3,7 @@ import { getSearchText } from "../../redux/actions/search";
 import { useDispatch, useSelector } from "react-redux";
 import Subscriber from "./Subscriber";
 
-function Aside() {
+const Aside = () => {
   const users = useSelector((state) => state.user?.users);
   const isLoadedUsers = useSelector((state) => state.user?.isLoadedUsers);
   const dispatch = useDispatch();
@@ -42,6 +42,6 @@ function Aside() {
       </div>
     </aside>
   );
-}
+};
 
 export default Aside;

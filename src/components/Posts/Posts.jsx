@@ -5,7 +5,7 @@ import Tweet from "../Tweet/Tweet";
 import { fetchAllPosts } from "../../redux/actions/posts";
 import { fetchAllUsers } from "../../redux/actions/user";
 
-function Posts() {
+const Posts = () => {
   const posts = useSelector((state) => state.posts?.posts);
   const isLoaded = useSelector((state) => state.posts?.isLoaded);
   const searchText = useSelector((state) => state.search?.text);
@@ -53,6 +53,6 @@ function Posts() {
           })}
     </main>
   );
-}
+};
 
 export default Posts;

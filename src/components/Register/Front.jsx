@@ -2,7 +2,7 @@ import React from "react";
 import { TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 
-function Front({ setRotate, rotate, setRegData }) {
+const Front = React.memo(({ setRotate, rotate, setRegData }) => {
   const {
     register,
     formState: { errors },
@@ -14,6 +14,7 @@ function Front({ setRotate, rotate, setRegData }) {
     setRegData(data);
     setRotate(!rotate);
   };
+  const MemodTextField = React.memo(TextField);
   return (
     <div className={"popup__front"}>
       <span className="popup__title">Создайте учетную запись</span>
@@ -58,7 +59,7 @@ function Front({ setRotate, rotate, setRegData }) {
           если эта учетная запись предназначена для компании, домашнего
           животного и т. д.
         </p>
-        <TextField
+        <MemodTextField
           className="popup__date"
           type="date"
           fullWidth
@@ -75,6 +76,6 @@ function Front({ setRotate, rotate, setRegData }) {
       </form>
     </div>
   );
-}
+});
 
 export default Front;

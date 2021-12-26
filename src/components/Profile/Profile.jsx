@@ -50,6 +50,8 @@ function Profile() {
     setOpen(false);
   };
 
+  const MemodAvatar = React.memo(Avatar);
+
   return (
     <main className="profile posts">
       <header className="posts__header">
@@ -59,7 +61,7 @@ function Profile() {
           </span>
         </div>
         <div className="profile__bg">
-          <Avatar
+          <MemodAvatar
             className={"profile__avatar"}
             sx={{
               width: 100,
@@ -74,7 +76,7 @@ function Profile() {
             }}
           >
             {isLoaded && curUser.firstName[0] + "" + curUser.lastName[0]}
-          </Avatar>
+          </MemodAvatar>
         </div>
       </header>
       <div className="profile__wrap">

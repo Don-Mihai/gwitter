@@ -7,7 +7,7 @@ import axios from "axios";
 import { fetchAllPosts } from "../../redux/actions/posts";
 import { fetchCurUser } from "../../redux/actions/user";
 
-function Tweet() {
+const Tweet = React.memo(() => {
   const [tweetText, setTweetText] = React.useState("");
   const [tweetImg, setTweetImg] = React.useState("");
   const user = useSelector((state) => state.user?.curUser);
@@ -129,6 +129,6 @@ function Tweet() {
       </div>
     </div>
   );
-}
+});
 
 export default Tweet;

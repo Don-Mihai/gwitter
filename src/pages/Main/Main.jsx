@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Authorize from "../../components/Authorize/Authorize.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 import Register from "../../components/Register/Register.jsx";
@@ -11,6 +11,18 @@ export default function Main() {
   const handleClickToggle = () => {
     setAuthToggle(!authToggle);
   };
+
+  const memoizeImg = useMemo(
+    () => (
+      <motion.img
+        whileTap={{ rotate: -5, translateX: -30 }}
+        src="/ghost2.svg"
+        alt=""
+        height={500}
+      />
+    ),
+    []
+  );
   return (
     <div className="main">
       <div className="main__wrap">
@@ -23,12 +35,7 @@ export default function Main() {
           </div>
           <div className="main__images">
             <img src="/ghost1.svg" alt="" height={500} />
-            <motion.img
-              whileTap={{ rotate: -5, translateX: -30 }}
-              src="/ghost2.svg"
-              alt=""
-              height={500}
-            />
+            {memoizeImg}
           </div>
         </div>
         {authToggle ? (
